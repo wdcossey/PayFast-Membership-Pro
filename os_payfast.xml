@@ -4,28 +4,41 @@
 	<title>PayFast</title>	
 	<author>William David Cossey</author>
 	<creationDate>05-04-2015</creationDate>
-	<copyright>Copyright 2015 William David Cossey</copyright>
-	<license></license>
+	<copyright>Copyright © 2015 William David Cossey</copyright>
+	<license>http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU/GPL version </license>
 	<authorEmail>wdcossey@gmail.com</authorEmail>
 	<authorUrl>www.autonomy.solutions</authorUrl>
-	<version>1.0</version>
+	<version>1.1</version>
 	<description>PayFast Payment Plugin For Membership Pro Extension</description>
 	<config>	
 		<fields name="params">
 			<fieldset name="basic" addfieldpath="/administrator/components/com_osmembership/elements">
-				<field name="payfast_mode" type="list" label="PayFast Mode" description="Set to Test Mode Or Live Mode">
-					<option value="0">Test Mode</option>
-					<option value="1">Live Mode</option>
+				<field name="payfast_mode" type="list" label="PayFast Mode:" description="Set to Sandbox Mode Or Live Mode">
+					<option value="0">Sandbox</option>
+					<option value="1">Live</option>
 				</field>
-				<field name="payfast_debugmode" type="list" label="Log File" description="If enabled, debug information is written to a log file.">
+				<field name="payfast_debugmode" type="list" label="Log File:" description="If enabled, debug information is written to a log file.">
 					<option value="0">Disabled</option>
 					<option value="1">Enabled</option>
 				</field>
-				<field name="merchant_id" type="text" size="128" label="Merchant ID" description="Enter your PayFast Merchant ID" default=""></field>	
-				<field name="merchant_key" type="text" size="128" label="Merchant Key" description="Enter your PayFast Merchant Key" default=""></field>	
-				<field name="merchant_passphrase" disabled="true" type="password" size="32" label="Pass Phrase (Optional)" description="If a pass phrase has been set in the PayFast Settings, then it needs to be included!" default=""></field>	
 				
-			</fieldset>			
+				<field  type="note" label="Live"></field>	
+				
+				
+				<field name="merchant_id" type="text" size="128" label="Merchant ID:" description="Enter your PayFast Merchant ID" default=""></field>	
+				<field name="merchant_key" type="text" size="128" label="Merchant Key:" description="Enter your PayFast Merchant Key" default=""></field>	
+				<field name="merchant_passphrase" disabled="true" type="password" size="32" label="Pass Phrase (Optional):" description="If a pass phrase has been set in the PayFast Settings, then it needs to be included!" default=""></field>	
+				
+				<field  type="note" label="Sandbox"></field>	
+				
+				<field name="merchant_id_sandbox" type="text" size="128" label="Merchant ID:" description="Enter your PayFast Merchant ID for the Sandbox Server" default=""></field>	
+				<field name="merchant_key_sandbox" type="text" size="128" label="Merchant Key:" description="Enter your PayFast Merchant Key for the Sandbox Server" default=""></field>	
+
+				<field type="note" label="Message(s)"></field>	
+				
+				<field name="message_submit" type="editor" size="256" label="Redirecting to PayFast" description="Message to be displayed when submitting the payment" default="Please wait while you are redirected to PayFast for payment processing..."></field>
+								
+			</fieldset>	
 		</fields>
 	</config>
 	<files>

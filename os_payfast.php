@@ -29,6 +29,8 @@ class os_payfast extends os_payment
 	
 	//var $_passphrase = null;
 
+	var $_submitMessage = 'Please wait while you are redirected to PayFast for payment processing...';
+	
 	/**
 	 * Array of params will be posted to server
 	 *
@@ -60,18 +62,26 @@ class os_payfast extends os_payment
 		$this->ipn_log_file = JPATH_COMPONENT . '/payfast_logs.txt';
 		$this->_mode = $params->get('payfast_mode');
 		
+		$tmpMessage = $params->get('message_submit');
+
+		if( !empty( $tmpMessage ) )
+		{
+			$this->_submitMessage = $tmpMessage;
+		}
+		
 		if ($this->_mode)
 		{
 			$this->_url = 'https://www.payfast.co.za/eng/process';
-			
+			$this->setParam('merchant_id', $params->get('merchant_id'));
+			$this->setParam('merchant_key', $params->get('merchant_key'));
 			//$this->_passphrase = $params->get('merchant_passphrase');
 		}
 		else
 		{
+			$this->setParam('merchant_id', $params->get('merchant_id_sandbox'));
+			$this->setParam('merchant_key', $params->get('merchant_key_sandbox'));
 			$this->_url = 'https://sandbox.payfast.co.za/eng/process';
 		}
-		$this->setParam('merchant_id', $params->get('merchant_id'));
-		$this->setParam('merchant_key', $params->get('merchant_key'));
 	}
 
 	/**
@@ -130,9 +140,9 @@ class os_payfast extends os_payment
 	 *
 	 */
 	function submitPost() 
-	{
+	{	
 	?>
-		<div class="contentheading"><?php echo  JText::_('Please wait while redirecting to PayFast for processing payment'); ?></div>
+		<div class="contentheading"><?php echo  JText::_($this->_submitMessage); ?></div>
 		<form method="post" action="<?php echo $this->_url; ?>" name="osm_form" id="osm_form">
 			<?php
 				foreach ($this->_params as $key=>$val) 
