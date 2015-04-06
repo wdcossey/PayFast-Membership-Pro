@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<install version="1.0" type="osmplugin" group="payment">
+	<name>os_payfast</name>
+	<title>PayFast</title>	
+	<author>William David Cossey</author>
+	<creationDate>05-04-2015</creationDate>
+	<copyright>Copyright 2015 William David Cossey</copyright>
+	<license></license>
+	<authorEmail>wdcossey@gmail.com</authorEmail>
+	<authorUrl>www.autonomy.solutions</authorUrl>
+	<version>1.0</version>
+	<description>PayFast Payment Plugin For Membership Pro Extension</description>
+	<config>	
+		<fields name="params">
+			<fieldset name="basic" addfieldpath="/administrator/components/com_osmembership/elements">
+				<field name="payfast_mode" type="list" label="PayFast Mode" description="Set to Test Mode Or Live Mode">
+					<option value="0">Test Mode</option>
+					<option value="1">Live Mode</option>
+				</field>
+				<field name="payfast_debugmode" type="list" label="Log File" description="If enabled, debug information is written to a log file.">
+					<option value="0">Disabled</option>
+					<option value="1">Enabled</option>
+				</field>
+				<field name="merchant_id" type="text" size="128" label="Merchant ID" description="Enter your PayFast Merchant ID" default=""></field>	
+				<field name="merchant_key" type="text" size="128" label="Merchant Key" description="Enter your PayFast Merchant Key" default=""></field>	
+				<field name="merchant_passphrase" disabled="true" type="password" size="32" label="Pass Phrase (Optional)" description="If a pass phrase has been set in the PayFast Settings, then it needs to be included!" default=""></field>	
+				
+			</fieldset>			
+		</fields>
+	</config>
+	<files>
+		<filename>os_payfast.php</filename>							
+		<folder>ABC</folder>
+	</files>	
+	<installsql />
+	<installfile />	
+</install>
